@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    padding: 10px;
+}
+/* Add any custom styles here */
+
+/* Example: Set custom styles for the generated tag */
+#generated_tag {
+    font-size: 1.5rem; /* Increase font size for visibility */
+    margin-top: 20px;  /* Add space above the generated tag */
+}

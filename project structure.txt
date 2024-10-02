@@ -1,0 +1,21 @@
+├── /app/
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── models.py
+│   ├── forms.py
+│   └── utils.py
+├── /templates/
+│   ├── index.html
+│   ├── result.html
+│   └── layout.html
+├── /static/
+│   ├── /css/
+│   ├── /js/
+│   └── /img/
+├── /database/
+│   ├── db.py
+│   └── seed.py
+├── /config/
+│   ├── config.py
+│   └── requirements.txt
+└── run.py

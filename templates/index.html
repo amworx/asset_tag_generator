@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Asset Tag Generator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Asset Tag</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/generate_tag" method="post">
+                    <div class="form-group">
+                        <label for="asset_number">Asset Number:</label>
+                        <input type="text" class="form-control" id="asset_number" name="asset_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asset_category">Asset Category:</label>
+                        <select class="form-control" id="asset_category" name="asset_category" required>
+                            <option value="">Select Asset Category</option>
+                            <option value="Employee Asset">Employee Asset</option>
+                            <option value="Office Asset">Office Asset</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="asset_type_group" style="display:none;">
+                        <label for="asset_type">Asset Type:</label>
+                        <select class="form-control" id="asset_type" name="asset_type">
+                            <option value="">Select Asset Type</option>
+                            {% for asset_type in asset_types %}
+                                <option value="{{ asset_type[0] }}">{{ asset_type[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group" id="building_group" style="display:none;">
+                        <label for="building">Building:</label>
+                        <select class="form-control" id="building" name="building">
+                            <option value="">Select Building</option>
+                            {% for building in buildings %}
+                                <option value="{{ building[0] }}">{{ building[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group" id="room_number_group" style="display:none;">
+                        <label for="room_number">Room Number:</label>
+                        <input type="text" class="form-control" id="room_number" name="room_number">
+                    </div>
+                    <div class="form-group" id="employee_department_group">
+                        <label for="employee_department">Employee Department:</label>
+                        <select class="form-control" id="employee_department" name="employee_department" required>
+                            <option value="">Select Department</option>
+                            {% for department in departments %}
+                                <option value="{{ department[0] }}">{{ department[0] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="employee_id">Employee ID:</label>
+                        <input type="text" class="form-control" id="employee_id" name="employee_id">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generate Tag</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Generated Tag:</h2>
+                <div id="generated_tag" class="alert alert-info" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Link to main.js -->
+</body>
+</html>

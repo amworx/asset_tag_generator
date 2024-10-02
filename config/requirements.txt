@@ -1,0 +1,3 @@
+Flask
+# Flask-WTF  # Uncomment if using Flask-WTF
+# Flask-SQLAlchemy  # Uncomment if using Flask-SQLAlchemy
