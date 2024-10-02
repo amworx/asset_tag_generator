@@ -1,12 +1,12 @@
+import os
 import mysql.connector
 
-# Database connection function
 def get_db_connection():
     connection = mysql.connector.connect(
-        host='db',  # Docker service name
-        user='root',
-        password='toor',
-        database='db'
+        host=os.getenv('MYSQL_HOST', 'localhost'),  # Default to localhost if not set
+        user=os.getenv('MYSQL_USER', 'root'),
+        password=os.getenv('MYSQL_PASSWORD', 'toor'),
+        database=os.getenv('MYSQL_DATABASE', 'db')
     )
     return connection
 

@@ -1,18 +1,17 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.10-slim
+# Use your base image, for example:
+FROM python:3.9-slim
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY config/requirements.txt ./requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy your existing application code
+COPY . /app
 
-# Copy the rest of the application code
-COPY . .
+# Install MySQL connector library
+RUN pip install mysql-connector-python
 
-# Expose the port the app runs on
-EXPOSE 1532
+# Copy database initialization script
+COPY database/init_db.py /app/database/init_db.py
 
-# Command to run the application
-CMD ["python", "app.py"]
+# Run the initialization script (optional, depending on your setup)
+CMD ["python", "database/init_db.py"]
