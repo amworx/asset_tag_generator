@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "1532:1532"  # Map port 1532 on the host to port 1532 on the container
+    volumes:
+      - .:/app  # Bind mount the current directory to /app in the container
+    environment:
+      FLASK_ENV: development  # Set environment variables if needed
