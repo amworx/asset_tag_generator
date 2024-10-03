@@ -1,17 +1,17 @@
-# Use your base image, for example:
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy your existing application code
+# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install MySQL connector library
-RUN pip install mysql-connector-python
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r config/requirements.txt
 
-# Copy database initialization script
-COPY database/init_db.py /app/database/init_db.py
+# Make port 1532 available to the world outside this container
+EXPOSE 1532
 
-# Run the initialization script (optional, depending on your setup)
-CMD ["python", "database/init_db.py"]
+# Run app.py when the container launches
+CMD ["python", "app.py"]

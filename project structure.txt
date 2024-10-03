@@ -1,20 +1,16 @@
 
 └── 📁app
     └── __init__.py
-    └── forms.py
-    └── models.py
     └── routes.py
-    └── utils.py
 └── 📁config
-    └── config.py
     └── requirements.txt
 └── 📁database
     └── __init__.py
     └── db.py
+    └── init_db.py
 └── 📁static
     └── 📁css
         └── styles.css
-    └── 📁img
     └── 📁js
         └── main.js
 └── 📁templates

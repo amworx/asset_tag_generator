@@ -1,33 +1,26 @@
 version: '3.8'
 
 services:
-  app:
+  web:
     build: .
     ports:
       - "1532:1532"
     volumes:
       - .:/app
     environment:
-      FLASK_ENV: development
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: toor
-      MYSQL_DATABASE: db
+      - FLASK_ENV=development
+    depends_on:
+      - db
     command: >
-      sh -c "sleep 10 && python /app/database/init_db.py && flask run --host=0.0.0.0 --port=1532"
-
+      sh -c "python database/init_db.py && python app.py"
   db:
-    image: mysql:latest
-    restart: always
+    image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_ROOT_PASSWORD: toor`
       MYSQL_DATABASE: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: toor
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-
+    ports:
+      - "3306:3306"
 volumes:
   db_data:
